@@ -7,8 +7,8 @@
 	<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 	<style>
 		.message-container {
-			margin-top: 100px;
-		}
+			margin-top: 100px
+		;}
 		.list-group {
 			height: 270px;
 			overflow-y: scroll;
