@@ -11826,7 +11826,18 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         chat: {
             messages: [],
             color: [],
-            user: []
+            user: [],
+            time: []
+        },
+
+        typing: ''
+    },
+
+    watch: {
+        message: function message() {
+            Echo.private('chat').whisper('typing', {
+                name: this.message
+            });
         }
     },
 
@@ -11843,11 +11854,16 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
                     _this.chat.messages.push(_this.message);
                     _this.chat.user.push('you');
                     _this.chat.color.push('success');
+                    _this.chat.time.push(_this.getTime());
                     _this.message = '';
                 }).catch(function (e) {
                     _this.errors.push(e);
                 });
             }
+        },
+        getTime: function getTime() {
+            var time = new Date();
+            return time.getHours() + ":" + time.getMinutes();
         }
     },
 
@@ -11858,6 +11874,14 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
             _this2.chat.messages.push(e.message);
             _this2.chat.user.push(e.user);
             _this2.chat.color.push('warning');
+            _this2.chat.time.push(_this2.getTime());
+        }).listenForWhisper('typing', function (e) {
+            console.log(e.name);
+            if (e.name != '') {
+                _this2.typing = 'typing...';
+            } else {
+                _this2.typing = '';
+            }
         });
     }
 });
@@ -48167,10 +48191,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-    props: ['color', 'user'],
+    props: ['color', 'user', 'time'],
 
     computed: {
         className: function className() {
@@ -48198,7 +48224,11 @@ var render = function() {
         staticClass: "list-group-item message-list-item",
         class: _vm.className
       },
-      [_vm._t("default")],
+      [
+        _vm._t("default"),
+        _vm._v(" "),
+        _c("span", [_vm._v("-- " + _vm._s(_vm.time))])
+      ],
       2
     ),
     _vm._v(" "),

@@ -26,11 +26,13 @@
 		<div class="row" id="app">
 			<div class="offset-2 col-8">
 				<li class="list-group-item active">Let's Chat</li>
+				<span class="badge badge-pill badge-primary" v-if="typing != ''"> @{{ typing }}</span>
 				<ul class="list-group" v-chat-scroll>
 					<message v-for="message, index in chat.messages"
 						:key=message.index
 						:color=chat.color[index]
-						:user=chat.user[index]>
+						:user=chat.user[index]
+						:time=chat.time[index]>
 						@{{message}}
 					</message>
 					<input type="text" v-model="message" @keyup.enter="sendMessgae" class="form-control" placeholder="Type Your message here...">
