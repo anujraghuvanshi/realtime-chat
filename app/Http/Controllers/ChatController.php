@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Events\ChatEvent;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ChatController extends Controller
@@ -24,10 +26,20 @@ class ChatController extends Controller
 	}
 
     //
-    public function send(Request $request) {
+    // public function send(Request $request) {
 
-    	$user = User::find(Auth::id());
+    // 	$user = User::find(Auth::id());
 
-    	event(new ChatEvent($request->message, $user));
+    // 	event(new ChatEvent($request->message, $user));
+    // }
+
+    public function send() {
+
+        $message = "This is testing";
+
+        $user = User::find(Auth::id());
+
+        event(new ChatEvent($message , $user));
+
     }
 }
