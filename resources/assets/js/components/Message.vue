@@ -1,7 +1,7 @@
 <template>
     <div>
         <li class="list-group-item message-list-item" :class="className"><slot></slot></li>
-        <small class="badge badge-pill float-right" :class="className"> You </small>
+        <small class="badge badge-pill float-right" :class="className"> {{user}} </small>
     </div>
 </template>
 
@@ -9,7 +9,8 @@
     export default {
 
         props: [
-            'color'
+            'color',
+            'user'
         ],
 
         computed:{

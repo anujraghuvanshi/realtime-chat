@@ -11818,22 +11818,48 @@ window.Vue = __webpack_require__(9);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('Message', __webpack_require__(41));
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
-  el: '#app',
+    el: '#app',
 
-  data: {
-    message: '',
-    messages: []
-  },
+    data: {
+        message: '',
 
-  methods: {
-    sendMessgae: function sendMessgae() {
-      if (this.message.length && this.message != '') {
-        console.log(this.message);
-        this.messages.push(this.message);
-        this.message = '';
-      }
+        chat: {
+            messages: [],
+            color: [],
+            user: []
+        }
+    },
+
+    methods: {
+        sendMessgae: function sendMessgae() {
+            var _this = this;
+
+            if (this.message.length && this.message != '') {
+                // Ajax Request
+                axios.post('send', {
+                    message: this.message
+                }).then(function (response) {
+                    // JSON responses are automatically parsed.
+                    _this.chat.messages.push(_this.message);
+                    _this.chat.user.push('you');
+                    _this.chat.color.push('success');
+                    _this.message = '';
+                }).catch(function (e) {
+                    _this.errors.push(e);
+                });
+            }
+        }
+    },
+
+    mounted: function mounted() {
+        var _this2 = this;
+
+        Echo.private('chat').listen('ChatEvent', function (e) {
+            _this2.chat.messages.push(e.message);
+            _this2.chat.user.push(e.user);
+            _this2.chat.color.push('warning');
+        });
     }
-  }
 });
 
 /***/ }),
@@ -11897,7 +11923,7 @@ window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default.a({
   broadcaster: 'pusher',
   key: 'dfd1cad3975c665937f5',
   cluster: 'ap2',
-  encrypted: 'true'
+  encrypted: false
 });
 
 /***/ }),
@@ -48144,7 +48170,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-    props: ['color'],
+    props: ['color', 'user'],
 
     computed: {
         className: function className() {
@@ -48179,7 +48205,7 @@ var render = function() {
     _c(
       "small",
       { staticClass: "badge badge-pill float-right", class: _vm.className },
-      [_vm._v(" You ")]
+      [_vm._v(" " + _vm._s(_vm.user) + " ")]
     )
   ])
 }

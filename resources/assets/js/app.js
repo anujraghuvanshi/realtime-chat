@@ -27,17 +27,42 @@ const app = new Vue({
 
     data: {
     	message: '',
-    	messages: []
+
+        chat: {
+        	messages: [],
+            color: [],
+            user: []
+        }
     },
 
 
     methods: {
     	sendMessgae() {
     		if (this.message.length && this.message != '') {
-    			console.log(this.message);
-    			this.messages.push(this.message);
-    			this.message = '';
+                // Ajax Request
+                axios.post('send', {
+                    message: this.message
+                })
+                .then(response => {
+                  // JSON responses are automatically parsed.
+                    this.chat.messages.push(this.message);
+                    this.chat.user.push('you');
+                    this.chat.color.push('success');
+                    this.message = '';
+                })
+                .catch(e => {
+                  this.errors.push(e)
+                })
     		}
     	}
     },
+
+    mounted() {
+        Echo.private('chat')
+        .listen('ChatEvent', (e) => {
+            this.chat.messages.push(e.message);
+            this.chat.user.push(e.user);
+            this.chat.color.push('warning');
+        });
+    }
 });

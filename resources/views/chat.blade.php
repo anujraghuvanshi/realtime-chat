@@ -24,12 +24,13 @@
 	
 	<div class="container message-container">
 		<div class="row" id="app">
-			<div class="offset-4 col-4">
+			<div class="offset-2 col-8">
 				<li class="list-group-item active">Let's Chat</li>
 				<ul class="list-group" v-chat-scroll>
-					<message v-for="message in messages"
+					<message v-for="message, index in chat.messages"
 						:key=message.index
-						color="success">
+						:color=chat.color[index]
+						:user=chat.user[index]>
 						@{{message}}
 					</message>
 					<input type="text" v-model="message" @keyup.enter="sendMessgae" class="form-control" placeholder="Type Your message here...">
