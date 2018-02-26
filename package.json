@@ -22,6 +22,7 @@
     "bootstrap": "^4.0.0-alpha.6",
     "laravel-echo": "^1.3.5",
     "pusher-js": "^4.2.2",
+    "v-toaster": "^1.0.3",
     "vue-chat-scroll": "^1.2.1"
   }
 }

@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Let's Chat</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
+	<title>Let's Chat</title>
 	<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
 	<style>
 		.message-container {
 			margin-top: 100px
@@ -25,7 +28,9 @@
 	<div class="container message-container">
 		<div class="row" id="app">
 			<div class="offset-2 col-8">
-				<li class="list-group-item active">Let's Chat</li>
+				<li class="list-group-item active">Let's Chat 
+					<span class="badge badge-pill badge-danger"> @{{activeUsers}} online</span>
+				</li>
 				<span class="badge badge-pill badge-primary" v-if="typing != ''"> @{{ typing }}</span>
 				<ul class="list-group" v-chat-scroll>
 					<message v-for="message, index in chat.messages"
