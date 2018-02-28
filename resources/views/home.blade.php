@@ -8,7 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    You are logged in! <a href="/chat">Click Here to Enter Chat Room</a>
                 </div>
             </div>
         </div>

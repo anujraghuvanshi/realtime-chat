@@ -19,6 +19,9 @@
 		.message-list-item{
 			padding: 3px 15px;
 		}
+		.btn-send {
+			border-radius: 10px;
+		}
 	</style>
 
 </head>
@@ -40,7 +43,14 @@
 						:time=chat.time[index]>
 						@{{message}}
 					</message>
-					<input type="text" v-model="message" @keyup.enter="sendMessgae" class="form-control" placeholder="Type Your message here...">
+					<div class="">
+						<div class="col-md-10 col-sm-10 col-xs-10">
+							<input type="text" v-model="message" @keyup.enter="sendMessgae" class="form-control" placeholder="Type Your message here..."> 
+						</div>
+						<div class="col-md-2 col-sm-2 col-xs-2">
+						<button type="button" class="button btn-success btn-send pull-right" v-on:click="sendMessgae">Send</button>
+						</div>
+					</div>
 				</ul>
 			</div>
 		</div>
