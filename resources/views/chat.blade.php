@@ -49,10 +49,12 @@
 						</div>
 						<div class="col-md-2 col-sm-2 col-xs-2">
 						<button type="button" class="button btn-success btn-send pull-right" v-on:click="sendMessgae">Send</button>
+
 						</div>
 					</div>
 				</ul>
 			</div>
+			<a href='' class="btn btn-warning btn-sm pull-right" @click.prevent='deleteSession'>Delete Chats</a>
 		</div>
 	</div>
 

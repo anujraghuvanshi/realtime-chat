@@ -1,0 +1,36 @@
+[debug] [2018-03-01T15:15:46.605Z] ----------------------------------------------------------------------
+[debug] [2018-03-01T15:15:46.608Z] Command:       /home/anuj/.nvm/versions/node/v8.9.0/bin/node /home/anuj/.nvm/versions/node/v8.9.0/bin/firebase serve
+[debug] [2018-03-01T15:15:46.609Z] CLI Version:   3.17.4
+[debug] [2018-03-01T15:15:46.609Z] Platform:      linux
+[debug] [2018-03-01T15:15:46.609Z] Node Version:  v8.9.0
+[debug] [2018-03-01T15:15:46.609Z] Time:          Thu Mar 01 2018 20:45:46 GMT+0530 (IST)
+[debug] [2018-03-01T15:15:46.609Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-03-01T15:15:46.645Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-03-01T15:15:46.645Z] > authorizing via signed-in user
+[debug] [2018-03-01T15:15:46.649Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/lets-chat-6956  
+  
+ Thu Mar 01 2018 20:45:46 GMT+0530 (IST)
+[debug] [2018-03-01T15:16:03.930Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-01T15:16:03.931Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/lets-chat-6956/tokens  
+  
+ Thu Mar 01 2018 20:46:03 GMT+0530 (IST)
+[debug] [2018-03-01T15:16:07.815Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/media/anuj/Study/Development/Laravel Projects/Laravel-chat-system'...
+[info] 
+[debug] [2018-03-01T15:16:07.821Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/lets-chat-6956  
+  
+ Thu Mar 01 2018 20:46:07 GMT+0530 (IST)
+[debug] [2018-03-01T15:16:10.956Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-01T15:16:10.957Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/633878609561/clients/_:getWebAppConfig  
+  
+ Thu Mar 01 2018 20:46:10 GMT+0530 (IST)
+[debug] [2018-03-01T15:16:13.550Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+
+[info] Shutting down...
+[info] Shutting down...
+[info] Shutting down...
+[info] Shutting down...
